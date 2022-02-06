@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/react-batteship/static/css/main.fefe1513.css",
+    "main.js": "/react-batteship/static/js/main.8e9379c3.js",
+    "index.html": "/react-batteship/index.html",
+    "main.fefe1513.css.map": "/react-batteship/static/css/main.fefe1513.css.map",
+    "main.8e9379c3.js.map": "/react-batteship/static/js/main.8e9379c3.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.fefe1513.css",
+    "static/js/main.8e9379c3.js"
+  ]
+}
