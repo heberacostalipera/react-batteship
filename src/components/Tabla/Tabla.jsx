@@ -21,6 +21,7 @@ const rowNumeros = emptyArray.map((_, i) => (
 ));
 
 const Tabla = ({
+  alwaysEnabled,
   color,
   disabledCols,
   disabledRows,
@@ -47,6 +48,7 @@ const Tabla = ({
               <Typography component="span">{alphabet[i]}</Typography>
             </Grid>
             <RowTabla
+              alwaysEnabled={alwaysEnabled}
               color={color}
               disabled={disabledRows && i > disabledRows}
               disabledCols={disabledCols}

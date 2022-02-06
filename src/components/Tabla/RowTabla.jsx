@@ -1,8 +1,10 @@
 import React from "react";
 
 // Material
-import Button from "@mui/material//Button";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
 import Grid from "@mui/material/Grid";
+import Typography from "@mui/material/Typography";
 
 // Icons
 import BlockIcon from "@mui/icons-material/Block";
@@ -11,7 +13,6 @@ import LocalFireDepartmentIcon from "@mui/icons-material/LocalFireDepartment";
 
 // utils
 import { states } from "../../utils/utils";
-import { Typography } from "@mui/material";
 
 const styles = {
   button: {
@@ -36,6 +37,7 @@ const icons = {
 };
 
 const RowTabla = ({
+  alwaysEnabled,
   color = "primary",
   disabled,
   disabledCols,
@@ -50,16 +52,23 @@ const RowTabla = ({
         <Button
           variant="outlined"
           onClick={onClick(i)}
-          color={color}
+          color={
+            status === states.TOUCHED || status === states.SINKED
+              ? "secondary"
+              : color
+          }
           sx={styles.button}
           disabled={
-            disabled ||
-            (disabledCols && i > disabledCols) ||
-            status !== states.EMPTY
+            !alwaysEnabled &&
+            (disabled ||
+              (disabledCols && i > disabledCols) ||
+              status !== states.EMPTY)
           }
         >
-          {Icon && <Icon sx={styles.icon} />}
-          {displayShips && id && <Typography sx={styles.icon}>{id}</Typography>}
+          <Box sx={styles.icon}>
+            {Icon && <Icon />}
+            {displayShips && id && <Typography>{id}</Typography>}
+          </Box>
         </Button>
       </Grid>
     );

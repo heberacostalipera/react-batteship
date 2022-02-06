@@ -11,7 +11,7 @@ const VistaInferior = () => {
 
   return (
     <div>
-      <Tabla displayShips map={allyMap} />
+      <Tabla displayShips map={allyMap} alwaysEnabled />
     </div>
   );
 };

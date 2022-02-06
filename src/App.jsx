@@ -4,6 +4,9 @@ import React from "react";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 
+// Context
+import FlotasProvider from "./context/FlotasProvider";
+
 // Components
 import Game from "./components/Game";
 
@@ -16,14 +19,16 @@ const darkTheme = createTheme({
 const App = () => {
   return (
     <ThemeProvider theme={darkTheme}>
-      <Box
-        sx={{
-          bgcolor: "background.default",
-          color: "text.primary",
-        }}
-      >
-        <Game />
-      </Box>
+      <FlotasProvider>
+        <Box
+          sx={{
+            bgcolor: "background.default",
+            color: "text.primary",
+          }}
+        >
+          <Game />
+        </Box>
+      </FlotasProvider>
     </ThemeProvider>
   );
 };

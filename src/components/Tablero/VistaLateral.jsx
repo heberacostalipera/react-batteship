@@ -1,7 +1,6 @@
 import React from "react";
 
 // Material
-import Button from "@mui/material/Button";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 
@@ -31,18 +30,19 @@ const missMessages = [
   "That was a fish...",
 ];
 
-const VistaLateral = () => {
+const VistaLateral = ({ onClick }) => {
   const {
     target: [row, col, status],
+    enemyTarget: [enemyRow, enemyCol, enemyStatus],
   } = useFlotas();
   return (
     <Grid container>
-      <Grid item xs={8}>
+      <Grid item xs={6}>
         <Typography>
           <b>
-            TARGET:
+            MY TARGET:
             <Typography component="span" color="primary">
-              <b>{row && col && ` ${alphabet[row]}; ${col + 1}`}</b>
+              <b>{row > -1 && col > -1 && ` ${alphabet[row]}; ${col + 1}`}</b>
             </Typography>
           </b>
         </Typography>
@@ -62,8 +62,28 @@ const VistaLateral = () => {
           </Typography>
         )}
       </Grid>
-      <Grid item xs={4}>
-        <Button variant="contained">Continue</Button>
+      <Grid item xs={6}>
+        <Typography>
+          <b>
+            ENEMY TARGET:
+            <Typography component="span" color="secondary">
+              <b>
+                {enemyRow > -1 &&
+                  enemyCol > -1 &&
+                  ` ${alphabet[enemyRow]}; ${enemyCol + 1}`}
+              </b>
+            </Typography>
+          </b>
+        </Typography>
+        {enemyStatus === states.MISSED && <Typography>Missed</Typography>}
+        {enemyStatus === states.TOUCHED && (
+          <Typography color="secondary">Hit</Typography>
+        )}
+        {enemyStatus === states.SINKED && (
+          <Typography color="secondary">
+            <b>Destroyed</b>
+          </Typography>
+        )}
       </Grid>
     </Grid>
   );

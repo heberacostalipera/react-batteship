@@ -1,5 +1,9 @@
 export const parseArray = (arr) => JSON.parse(JSON.stringify(arr));
 
+export const players = {
+  PLAYER: "player",
+  PC: "pc",
+};
 export const states = {
   TOUCHED: "touched",
   SINKED: "sinked",
@@ -64,7 +68,7 @@ export const getShips = () => {
   return ships;
 };
 
-export const getRandomInt = (max) => Math.floor(Math.random() * max);
+export const getRandomInt = (max) => Math.floor(Math.random() * (max + 1));
 
 const getRandomOrientation = () =>
   orientations[Object.keys(orientations)[getRandomInt(1)]];
